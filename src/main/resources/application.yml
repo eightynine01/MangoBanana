@@ -1,0 +1,7 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  thymeleaf:
+    cache: false
+
