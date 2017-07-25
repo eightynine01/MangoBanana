@@ -2,6 +2,8 @@ package org.univth.mangobanana.article.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.univth.mangobanana.article.domain.Article;
 import org.univth.mangobanana.article.repository.ArticleRepository;
@@ -32,5 +34,9 @@ public class ArticleService{
     public void createArticle(Article article){
         log.info("Created By : {}", article.getArticleTitle());
         articleRepository.save(article);
+    }
+
+    public Page<Article> findByArticleTitle(String articleTitle, Pageable page){
+        return articleRepository.findByArticleTitle(articleTitle, page);
     }
 }

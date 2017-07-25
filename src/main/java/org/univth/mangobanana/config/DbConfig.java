@@ -16,7 +16,6 @@ public class DbConfig {
     public DataSource dataSource(){
         HikariDataSource config = new HikariDataSource();
         config.setDriverClassName("org.postgresql.Driver");
-//        config.setDriverClassName("org.postgresql.ds.PGPoolingDataSource");
         config.setJdbcUrl("jdbc:postgresql://localhost:32768/local_database");
         config.setUsername("mangobanana");
         config.setPassword("a0000001");

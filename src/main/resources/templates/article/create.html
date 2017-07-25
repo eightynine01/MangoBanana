@@ -2,29 +2,31 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Create Article</title>
 </head>
 <body>
     <h3>게시물 작성</h3>
-    <form action="#" th:action="@{/article/create}" th:object="${article}" method="POST">
+    <form th:action="@{/article/create}" method="POST">
         <input type="hidden" name="_method" value="PUT" />
         <table>
             <tr>
                 <td>Title:</td>
                 <td>
-                    <input type="text" th:field="*{title}" />
+                    <label>
+                        <input th:type="text" th:name="articleTitle"/>
+                    </label>
                 </td>
-                <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error message</td>
             </tr>
             <tr>
                 <td>Content:</td>
                 <td>
-                    <input type="text" th:field="*{content}" />
+                    <label>
+                        <input th:type="text" th:name="articleContent"/>
+                    </label>
                 </td>
-                <td th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Content error message</td>
             </tr>
             <tr>
-                <td><button type="submit">Submit post</button></td>
+                <td><button th:type="submit">Create Article</button></td>
             </tr>
         </table>
     </form>

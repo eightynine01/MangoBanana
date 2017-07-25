@@ -2,6 +2,7 @@ package org.univth.mangobanana.article.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -26,9 +27,9 @@ public class ArticleController {
     }
 
     @GetMapping("/all")
-    public String getArticleAll(Model article){
-        article.addAttribute(articleService.findAllArticle());
-        return "/article/all";
+    public String getArticleAll(Model article, Pageable pageable){
+        article.addAttribute("articles",articleService.findByArticleTitle(pageable));
+        return "/article/list";
     }
 
     @GetMapping("/{articleId}")
@@ -49,12 +50,14 @@ public class ArticleController {
     }
 
     @PutMapping("/create")
-    public String createArticle(@Valid Article article,BindingResult bindingResult){
-        if (bindingResult.hasErrors()) {
-            return "index";
-        }
+    public String createArticle(Article article){
+//        if (bindingResult.hasErrors()) {
+//            return "index";
+//        }
+        log.info("들어옴");
+        log.info(article.getArticleTitle());
         articleService.createArticle(article);
-        return "/article/all";
+        return "/article/create";
     }
     @GetMapping("/create")
     public String createArticle(){

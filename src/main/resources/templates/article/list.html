@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="/layout/base">
+<th:block layout:fragment="css">
+</th:block>
+<th:block layout:fragment="script">
+</th:block>
+<th:block layout:fragment="content">
+<div class="container">
+    <h2>Striped Rows</h2>
+    <p>The .table-striped class adds zebra-stripes to a table:</p>
+    <div class="row col-md-8">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th class="col-xs-8">Firstname</th>
+                <th class="col-xs-3">Lastname</th>
+                <th class="col-xs-1">Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="article:${articles}">
+                <td th:text="${article.articleTitle}"></td>
+                <td>Doe</td>
+                <td>john@example.com</td>
+            </tr>
+            <!--<tr>-->
+                <!--<td>Mary</td>-->
+                <!--<td>Moe</td>-->
+                <!--<td>mary@example.com</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td>July</td>-->
+                <!--<td>Dooley</td>-->
+                <!--<td>july@example.com</td>-->
+            <!--</tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <!--<div th:each="article:${articles}">-->
+        <!--<p th:text="${article.articleTitle}"></p>-->
+        <!--<p th:text="${article.articleContent}"></p>-->
+    <!--</div>-->
+</th:block>
+</html>
